@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form Validation</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f2f2;
+        }
+
+        .container{
+            width:600px;
+            margin:30px auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        h2{
+            text-align:center;
+            color:darkblue;
+        }
+
+        table{
+            width:100%;
+        }
+
+        td{
+            padding:8px;
+        }
+
+        input, select, textarea{
+            width:100%;
+            padding:8px;
+            border:1px solid gray;
+            border-radius:5px;
+        }
+
+        input[type=radio],
+        input[type=checkbox]{
+            width:auto;
+        }
+
+        input[type=submit],
+        input[type=reset]{
+            background:darkblue;
+            color:white;
+            border:none;
+            cursor:pointer;
+            width:120px;
+        }
+
+        input[type=submit]:hover,
+        input[type=reset]:hover{
+            background:green;
+        }
+    </style>
+
+    <script>
+        function validateForm()
+        {
+            var name=document.forms["myForm"]["name"].value;
+            var email=document.forms["myForm"]["email"].value;
+            var mobile=document.forms["myForm"]["mobile"].value;
+            var password=document.forms["myForm"]["password"].value;
+            var age=document.forms["myForm"]["age"].value;
+
+            if(name=="")
+            {
+                alert("Please enter your name");
+                return false;
+            }
+
+            var emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if(!email.match(emailPattern))
+            {
+                alert("Enter a valid Email");
+                return false;
+            }
+
+            if(mobile.length!=10 || isNaN(mobile))
+            {
+                alert("Enter a valid 10-digit Mobile Number");
+                return false;
+            }
+
+            if(password.length<6)
+            {
+                alert("Password must contain at least 6 characters");
+                return false;
+            }
+
+            if(age<18)
+            {
+                alert("Age should be 18 or above");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Registration Form</h2>
+
+<form name="myForm" onsubmit="return validateForm()">
+
+<table>
+
+<tr>
+<td>Full Name</td>
+<td><input type="text" name="name"></td>
+</tr>
+
+<tr>
+<td>Father's Name</td>
+<td><input type="text" name="father"></td>
+</tr>
+
+<tr>
+<td>Mother's Name</td>
+<td><input type="text" name="mother"></td>
+</tr>
+
+<tr>
+<td>Email</td>
+<td><input type="text" name="email"></td>
+</tr>
+
+<tr>
+<td>Mobile Number</td>
+<td><input type="text" name="mobile"></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" name="password"></td>
+</tr>
+
+<tr>
+<td>Confirm Password</td>
+<td><input type="password" name="confirm"></td>
+</tr>
+
+<tr>
+<td>Age</td>
+<td><input type="number" name="age"></td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td><input type="date"></td>
+</tr>
+
+<tr>
+<td>Gender</td>
+<td>
+<input type="radio" name="gender">Male
+<input type="radio" name="gender">Female
+<input type="radio" name="gender">Other
+</td>
+</tr>
+
+<tr>
+<td>Department</td>
+<td>
+<select>
+<option>Select</option>
+<option>Computer Science</option>
+<option>Information Technology</option>
+<option>Commerce</option>
+<option>Mathematics</option>
+<option>Physics</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Year of Study</td>
+<td>
+<select>
+<option>Select</option>
+<option>I Year</option>
+<option>II Year</option>
+<option>III Year</option>
+<option>IV Year</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Address</td>
+<td>
+<textarea rows="4"></textarea>
+</td>
+</tr>
+
+<tr>
+<td>City</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>State</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>Country</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>Pincode</td>
+<td><input type="text"></td>
+</tr>
+
+<tr>
+<td>Hobbies</td>
+<td>
+<input type="checkbox">Reading
+<input type="checkbox">Music
+<input type="checkbox">Sports
+<input type="checkbox">Coding
+</td>
+</tr>
+
+<tr>
+<td>Upload Photo</td>
+<td><input type="file"></td>
+</tr>
+
+<tr>
+<td>Favourite Color</td>
+<td><input type="color"></td>
+</tr>
+
+<tr>
+<td>Website</td>
+<td><input type="url"></td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="Register">
+<input type="reset" value="Reset">
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</div>
+
+</body>
+</html>
